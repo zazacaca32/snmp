@@ -11,7 +11,7 @@ LANG=C
 #directory="/home/rts";
 directory=".";
 #directory="/root/telemetry";
-key="test123";
+key="Orangepi-446";
 version="2023-06-08";
 
 NEC_PowerRequestedState=$(snmpget -v 1 -c private 192.168.0.10 1.3.6.1.4.1.2699.1.4.1.4.3.0 | cut -d ":" -f2 | xargs);
@@ -134,5 +134,6 @@ jsonvar="{`
 ##############################################
 
 echo -e "${jsonvar}";
+echo -e "${jsonvar}" >> telemetry.json
 #curl -X POST -H "Content-Type: application/json" -d "$jsonvar" http://188.35.161.31/core/jsonadd.php;
 
