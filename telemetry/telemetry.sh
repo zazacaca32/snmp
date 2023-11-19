@@ -87,10 +87,8 @@ done
 ##############################################
 
 jsonvar="{`
-`\"system\" : `
-        `{\"Akey\" : \"$key\", `
-        `\"Version\" : \"$version\", `
-	`\"MAC\" : \"$MAC\", `
+`\"orangepi\" : `
+	`{\"MAC\" : \"$MAC\", `
 	`\"LA1\" : \"${LA[0]}\", `
 	`\"LA5\" : \"${LA[1]}\", `
 	`\"LA15\" : \"${LA[2]}\", `
@@ -134,6 +132,6 @@ jsonvar="{`
 ##############################################
 
 echo -e "${jsonvar}";
-echo -e "${jsonvar}" >> telemetry.json
+#echo -e "${jsonvar}" > telemetry.json
 #curl -X POST -H "Content-Type: application/json" -d "$jsonvar" http://188.35.161.31/core/jsonadd.php;
 

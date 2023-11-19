@@ -22,10 +22,15 @@ const STATE = {
 
 const session = snmp.createSession("192.168.0.10", "private");
 
-const socket = io("ws://rstring.mgul.ac.ru", {
+const socket = io("ws://rstring.mgul.ac.ru/", {
+    // path: '/snmp',
     query: {
 	    room: 446
     }
+});
+
+socket.on("connect_error", (error) => {
+    console.log('Connection Failed', error);
 });
 
 function invertObj(obj) {

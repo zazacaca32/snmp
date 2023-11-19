@@ -1,10 +1,13 @@
 import { session, socket, utils } from "./snmp.mjs"
+import { exec } from 'child_process';
 // console.log(socket);
 
 // socket.on("msg", (message) => {
 //     // do something with the message.
 //     console.log(message);
 // })
+
+
 
 // Запрос одного параметра 
 socket.on("get", (obj) => {
@@ -156,7 +159,18 @@ socket.on("telemetry", () => {
 
     });
 
-
-
-
 })
+
+socket.on("telemetryData", () => {
+        console.log("telemetryData")
+        var yourscript = exec('/home/ec/snmpClient/telemetry/telemetry.sh', {cwd: "/home/ec/snmpClient/telemetry/"},
+        (error, stdout, stderr) => {
+            console.log(stdout);
+            socket.emit("telemetryData", JSON.parse(stdout));
+            if (error !== null) {
+                console.log(`exec error: ${error}`);
+            console.log(stderr);
+
+            }
+        });
+});
